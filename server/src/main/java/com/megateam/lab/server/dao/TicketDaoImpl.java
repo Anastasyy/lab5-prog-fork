@@ -1,5 +1,6 @@
 package com.megateam.lab.server.dao;
 
+import com.megateam.lab.common.dao.Dao;
 import com.megateam.lab.common.data.Ticket;
 import com.megateam.lab.common.exceptions.DatabaseException;
 import com.megateam.lab.common.exceptions.EnvException;
@@ -7,12 +8,19 @@ import com.megateam.lab.server.db.Database;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import lombok.AllArgsConstructor;
 import lombok.NonNull;
 
-@AllArgsConstructor
 public class TicketDaoImpl implements Dao<Ticket> {
   @NonNull private Database<Ticket> database;
+
+  public TicketDaoImpl(Database<Ticket> database) {
+    this.database = database;
+    try {
+      database.load();
+    } catch (Exception e) {
+      //			If collection automatic loading failed - ignoring
+    }
+  }
 
   @Override
   public LocalDateTime getCreationDate() {
@@ -57,5 +65,20 @@ public class TicketDaoImpl implements Dao<Ticket> {
   @Override
   public void removeLast() {
     database.removeLast();
+  }
+
+  @Override
+  public void save() throws EnvException, DatabaseException {
+    database.save();
+  }
+
+  @Override
+  public void load() throws EnvException, DatabaseException {
+    database.load();
+  }
+
+  @Override
+  public int size() {
+    return database.size();
   }
 }

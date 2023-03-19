@@ -1,4 +1,4 @@
-package com.megateam.lab.server.dao;
+package com.megateam.lab.common.dao;
 
 import com.megateam.lab.common.exceptions.DatabaseException;
 import com.megateam.lab.common.exceptions.EnvException;
@@ -25,4 +25,10 @@ public interface Dao<T> {
   void removeFirst();
 
   void removeLast();
+
+  void save() throws EnvException, DatabaseException;
+
+  void load() throws EnvException, DatabaseException;
+
+  int size();
 }

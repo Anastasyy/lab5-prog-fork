@@ -29,4 +29,6 @@ public interface Database<T> {
   void save() throws EnvException, DatabaseException;
 
   void load() throws EnvException, DatabaseException;
+
+  int size();
 }

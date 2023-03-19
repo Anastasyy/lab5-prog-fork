@@ -13,3 +13,6 @@ build
 
 # Ignore Drawio temporary files
 docs/.$*
+
+# Ignore common module autotesting temporary directory
+common/tmp

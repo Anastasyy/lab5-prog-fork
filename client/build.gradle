@@ -3,4 +3,19 @@ version = '1.0.0'
 
 dependencies {
 	implementation project(':common')
+	implementation project(':server')
+}
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'com.megateam.lab.client.Client'
+	}
+
+	duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+
+	from {
+		configurations.runtimeClasspath.collect {
+			it.isDirectory() ? it : zipTree(it)
+		}
+	}
 }

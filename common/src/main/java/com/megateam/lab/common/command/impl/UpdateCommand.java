@@ -10,32 +10,27 @@ import com.megateam.lab.common.exceptions.EnvException;
 import com.megateam.lab.common.exceptions.impl.InvalidAmountOfArgumentsException;
 import com.megateam.lab.common.util.Printer;
 import com.megateam.lab.common.util.TypesParser;
+import java.util.List;
 import lombok.Builder;
 import lombok.NonNull;
 
-import java.util.List;
-
 public class UpdateCommand extends Command {
-	@Builder(setterPrefix = "set")
-	public UpdateCommand(
-			@NonNull Printer printer,
-			@NonNull CommandSource source,
-			@NonNull List<String> args
-	) {
-		super(printer, source, UsesElements.USES, args);
-	}
+  @Builder(setterPrefix = "set")
+  public UpdateCommand(
+      @NonNull Printer printer, @NonNull CommandSource source, @NonNull List<String> args) {
+    super(printer, source, UsesElements.USES, args);
+  }
 
-	@Override
-	public boolean execute() throws EnvException, DatabaseException, CommandArgumentsException {
-		if (args.size() != 1) {
-			throw new InvalidAmountOfArgumentsException(
-					"Command consumes 1 argument. Provided: " + args.size()
-			);
-		}
+  @Override
+  public boolean execute() throws EnvException, DatabaseException, CommandArgumentsException {
+    if (args.size() != 1) {
+      throw new InvalidAmountOfArgumentsException(
+          "Command consumes 1 argument. Provided: " + args.size());
+    }
 
-		Ticket ticket = (Ticket) additionalArgs.get(0);
-		dao.update(TypesParser.parseInteger(args.get(0)), ticket);
-		printer.println("Element update succeed.");
-		return true;
-	}
+    Ticket ticket = (Ticket) additionalArgs.get(0);
+    dao.update(TypesParser.parseInteger(args.get(0)), ticket);
+    printer.println("Element update succeed.");
+    return true;
+  }
 }

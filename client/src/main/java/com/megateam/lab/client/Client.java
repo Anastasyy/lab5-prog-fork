@@ -1,17 +1,17 @@
 package com.megateam.lab.client;
 
 import com.megateam.lab.client.cli.Console;
-import com.megateam.lab.common.resolvers.Resolver;
 import com.megateam.lab.client.resolvers.SingleCommandResolver;
 import com.megateam.lab.common.command.CommandFactory;
 import com.megateam.lab.common.dao.Dao;
 import com.megateam.lab.common.data.Ticket;
+import com.megateam.lab.common.executors.Executor;
+import com.megateam.lab.common.resolvers.Resolver;
 import com.megateam.lab.common.util.ConsolePrinter;
 import com.megateam.lab.common.util.FileManipulationService;
 import com.megateam.lab.common.util.Printer;
 import com.megateam.lab.server.dao.TicketDaoImpl;
 import com.megateam.lab.server.db.*;
-import com.megateam.lab.common.executors.Executor;
 import com.megateam.lab.server.executors.SingleCommandExecutor;
 import java.util.Scanner;
 

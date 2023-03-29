@@ -1,7 +1,6 @@
 package com.megateam.lab.common.command;
 
-public enum UsesElements
-{
+public enum UsesElements {
   USES,
   NOT;
 }

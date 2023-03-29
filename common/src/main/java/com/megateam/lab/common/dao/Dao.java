@@ -2,11 +2,10 @@ package com.megateam.lab.common.dao;
 
 import com.megateam.lab.common.exceptions.DatabaseException;
 import com.megateam.lab.common.exceptions.EnvException;
-import lombok.NonNull;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import lombok.NonNull;
 
 public interface Dao<T> {
   LocalDateTime getCreationDate();

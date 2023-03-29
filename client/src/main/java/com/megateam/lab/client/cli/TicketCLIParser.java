@@ -8,12 +8,11 @@ import com.megateam.lab.common.data.util.DataClassesValidator;
 import com.megateam.lab.common.exceptions.UIException;
 import com.megateam.lab.common.exceptions.impl.UserDataInputInterruptedException;
 import com.megateam.lab.common.util.Printer;
-import lombok.NonNull;
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Scanner;
+import lombok.NonNull;
 
 public class TicketCLIParser {
   @NonNull private Scanner scanner;

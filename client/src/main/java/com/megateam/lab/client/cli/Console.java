@@ -1,21 +1,20 @@
 package com.megateam.lab.client.cli;
 
-import com.megateam.lab.common.resolvers.Resolver;
 import com.megateam.lab.common.command.Command;
 import com.megateam.lab.common.command.UsesElements;
 import com.megateam.lab.common.command.util.Exchange;
 import com.megateam.lab.common.data.util.DataClassesValidator;
-import com.megateam.lab.common.util.Printer;
 import com.megateam.lab.common.executors.Executor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import sun.misc.Signal;
-
+import com.megateam.lab.common.resolvers.Resolver;
+import com.megateam.lab.common.util.Printer;
 import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import sun.misc.Signal;
 
 @RequiredArgsConstructor
 public class Console {
@@ -30,10 +29,12 @@ public class Console {
     DataClassesValidator validator = new DataClassesValidator();
     TicketCLIParser ticketCLIParser = new TicketCLIParser(scanner, validator, printer);
 
-    Signal.handle(new Signal("INT"), (signal) -> {
-      printer.println("\nProgram was interrupted: shutdown...");
-      System.exit(0);
-    });
+    Signal.handle(
+        new Signal("INT"),
+        (signal) -> {
+          printer.println("\nProgram was interrupted: shutdown...");
+          System.exit(0);
+        });
 
     while (true) {
       printer.print("Enter command: ");

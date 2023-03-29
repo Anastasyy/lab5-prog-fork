@@ -3,7 +3,6 @@ package com.megateam.lab.common.resolvers;
 import com.megateam.lab.common.command.util.Exchange;
 import com.megateam.lab.common.exceptions.ResolverException;
 import com.megateam.lab.common.exceptions.impl.DefaultResolverUsedException;
-
 import java.io.File;
 import java.util.List;
 

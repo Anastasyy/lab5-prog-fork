@@ -9,9 +9,8 @@ import com.megateam.lab.common.executors.Executor;
 import com.megateam.lab.common.resolvers.Resolver;
 import com.megateam.lab.common.util.FileManipulationService;
 import com.megateam.lab.common.util.Printer;
-import lombok.*;
-
 import java.util.List;
+import lombok.*;
 
 @RequiredArgsConstructor
 public abstract class Command {
@@ -26,5 +25,6 @@ public abstract class Command {
   @Setter protected Executor executor;
   @Setter protected Resolver resolver;
 
-  public abstract boolean execute() throws EnvException, DatabaseException, CommandArgumentsException;
+  public abstract boolean execute()
+      throws EnvException, DatabaseException, CommandArgumentsException;
 }

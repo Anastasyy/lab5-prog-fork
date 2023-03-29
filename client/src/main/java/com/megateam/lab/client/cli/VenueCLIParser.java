@@ -6,11 +6,10 @@ import com.megateam.lab.common.data.util.DataClassesValidator;
 import com.megateam.lab.common.exceptions.UIException;
 import com.megateam.lab.common.exceptions.impl.UserDataInputInterruptedException;
 import com.megateam.lab.common.util.Printer;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-
 import java.util.Arrays;
 import java.util.Scanner;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class VenueCLIParser {

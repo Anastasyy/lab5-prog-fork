@@ -1,0 +1,21 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+# Ignore IDEA files
+.idea
+*.iml
+
+# Ignore MacOS files
+.DS_Store
+
+# Ignore Drawio temporary files
+docs/.$*
+
+# Ignore common module autotesting temporary directory
+common/tmp
+
+# Ignoring testing collection file
+collection.xml

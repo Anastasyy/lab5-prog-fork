@@ -1,0 +1,76 @@
+############################## HELP ##############################
+------------------------------------------------------------------
+
+help -- command, that shows an information about existing commands
+    usage:
+        help
+
+------------------------------------------------------------------
+
+add {element} -- command for adding a new element into collection
+    usage:
+        add
+        <collection input scenario started>
+
+------------------------------------------------------------------
+
+show -- command, that shows an information about the collection
+    usage:
+        show
+
+------------------------------------------------------------------
+
+clear -- command, that clears the existing collection
+    usage:
+        clear
+
+------------------------------------------------------------------
+
+save -- command, that saves existing collection to a file, specified in SAVING_FILE env variable
+    usage:
+        save
+
+------------------------------------------------------------------
+
+remove_first -- command, that removes first element of collection, if that element exists
+    usage:
+        remove_first
+
+------------------------------------------------------------------
+
+remove_last -- command, that remove last element of collection, if that element exists
+    usage:
+        remove_last
+------------------------------------------------------------------
+
+exit -- command, that stops the application
+    usage:
+        exit
+
+------------------------------------------------------------------
+
+print_field_descending_price -- command, that prints to console all the prices fields of existing elements in descending order
+    usage:
+        print_field_descending_price
+
+------------------------------------------------------------------
+
+remove_any_by_refundable -- command, that removes first element with provided refundable status
+    usage:
+        remove_any_by_refundable <refundable status>
+
+------------------------------------------------------------------
+
+remove_by_id -- command, that removes element by id
+    usage:
+        remove_by_id <id>
+
+------------------------------------------------------------------
+
+update -- command, that updates element in collection
+    usage:
+        update <id>
+        <collection input scenario started>
+
+------------------------------------------------------------------
+############################## HELP ##############################

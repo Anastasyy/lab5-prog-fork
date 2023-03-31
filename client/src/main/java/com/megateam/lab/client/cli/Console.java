@@ -1,28 +1,25 @@
 package com.megateam.lab.client.cli;
 
-import com.megateam.lab.common.resolvers.Resolver;
 import com.megateam.lab.common.command.Command;
 import com.megateam.lab.common.command.UsesElements;
 import com.megateam.lab.common.command.util.Exchange;
 import com.megateam.lab.common.data.util.DataClassesValidator;
+import com.megateam.lab.common.executors.ScriptExecutor;
+import com.megateam.lab.common.resolvers.Resolver;
 import com.megateam.lab.common.util.Printer;
-import com.megateam.lab.common.executors.Executor;
+import com.megateam.lab.server.executors.SingleCommandExecutor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import sun.misc.Signal;
 
-import java.io.File;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 @RequiredArgsConstructor
 public class Console {
-  public static final Set<File> EXECUTED_SCRIPTS = new HashSet<>();
-
   @NonNull private Resolver resolver;
-  @NonNull private Executor executor;
+  @NonNull private SingleCommandExecutor singleCommandExecutor;
+  @NonNull private ScriptExecutor scriptExecutor;
   @NonNull private Scanner scanner;
   @NonNull private Printer printer;
 
@@ -45,12 +42,13 @@ public class Console {
 
         Exchange exchange = resolver.resolve(scanner.nextLine().trim());
         Command command = exchange.getCommand();
+        command.setScriptExecutor(scriptExecutor);
 
         if (command.getUsesElements() == UsesElements.USES) {
           command.setAdditionalArgs(List.of(ticketCLIParser.parseTicket()));
-          exchange.setCommand(command);
         }
-        executor.execute(exchange);
+        exchange.setCommand(command);
+        singleCommandExecutor.execute(exchange);
       } catch (Exception e) {
         printer.println(e.getMessage());
       }

@@ -11,11 +11,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommandFactory {
     @NonNull private Printer printer;
+
   public Command newCommand(
           @NonNull String commandString,
           @NonNull CommandSource source,
           @NonNull List<String> args
-  ) throws CommandNotFoundException {
+          ) throws CommandNotFoundException {
+
       Command command =
               switch (commandString) {
                     case "help" -> HelpCommand.builder()
@@ -66,7 +68,11 @@ public class CommandFactory {
                             .setArgs(args)
                             .build();
 
-//                    TODO: case "execute_script"
+                    case "execute_script" -> ExecuteScriptCommand.builder()
+                            .setPrinter(printer)
+                            .setSource(source)
+                            .setArgs(args)
+                            .build();
 
                     case "exit" -> ExitCommand.builder()
                             .setPrinter(printer)

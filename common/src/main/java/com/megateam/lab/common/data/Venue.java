@@ -27,7 +27,7 @@ public class Venue {
   @XmlElement(name = "venueType")
   private VenueType type;
 
-  public Venue(String name, Integer capacity, VenueType type) {
+  public Venue(@NonNull String name, @NonNull Integer capacity, VenueType type) {
     this.id = VenueIdGenerator.generateNewId();
     this.name = name;
     this.capacity = capacity;

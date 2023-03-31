@@ -11,12 +11,28 @@ import java.util.Scanner;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * User can input Venue from Console
+ */
 @RequiredArgsConstructor
 public class VenueCLIParser {
+  /**
+   * Contains an instance of Scanner
+   */
   @NonNull private Scanner scanner;
+  /**
+   * Contains an instance of ValidatorClassesData
+   */
   @NonNull private DataClassesValidator validator;
+  /**
+   * Contains an instance of Printer
+   */
   @NonNull private Printer printer;
 
+  /**
+   * Offers an ability to interrupt data input
+   * @throws UserDataInputInterruptedException if got not y/Y from user
+   */
   private void proposeContinue() throws UIException {
     printer.print("Do you want to continue? [y/Y - for yes, other - for no]: ");
     String userInput = scanner.nextLine().trim();
@@ -24,6 +40,12 @@ public class VenueCLIParser {
       throw new UserDataInputInterruptedException("Data input successfully interrupted");
   }
 
+  /**
+   *
+   * Method can parse venue name
+   * @return parsed venue name
+   * @throws UserDataInputInterruptedException if got not y/Y from user
+   */
   private String parseVenueName() throws UIException {
     printer.print("Enter venue name (non-empty): ");
 
@@ -48,6 +70,12 @@ public class VenueCLIParser {
       return parseVenueName();
     }
   }
+
+  /**
+   * Method can parse venue capacity
+   * @return venue capacity
+   * @throws UserDataInputInterruptedException if got y/Y from user
+   */
 
   private Integer parseVenueCapacity() throws UIException {
     printer.print("Enter venue capacity (Integer & greater than 0): ");
@@ -78,6 +106,11 @@ public class VenueCLIParser {
     }
   }
 
+  /**
+   * Method can parse venue type
+   * @return venue type
+   * @throws UserDataInputInterruptedException if got y/Y from user
+   */
   private VenueType parseVenueType() throws UIException {
     printer.print(
         String.format("Enter venue type (can be null) %s: ", Arrays.toString(VenueType.values())));
@@ -104,6 +137,11 @@ public class VenueCLIParser {
     }
   }
 
+  /**
+   * Creates an instance of Venue and return it
+   * @return instance of venue
+   * @throws UserDataInputInterruptedException if input stream ended or process interrupted by user
+   */
   public Venue parseVenue() throws UIException {
     printer.println("#### ENTERING VENUE ####");
     String name = parseVenueName();

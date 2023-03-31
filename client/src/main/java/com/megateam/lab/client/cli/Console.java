@@ -14,14 +14,35 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import sun.misc.Signal;
 
+/**
+ * The main class provides an ability to interact with an application
+ */
 @RequiredArgsConstructor
 public class Console {
+  /**
+   * Contains an instance of Resolver
+   */
   @NonNull private Resolver resolver;
+  /**
+   * Contains an instance of CommandSingleExecutor
+   */
   @NonNull private SingleCommandExecutor singleCommandExecutor;
+  /**
+   * Contains an instance of ScriptExecutor
+   */
   @NonNull private ScriptExecutor scriptExecutor;
+  /**
+   * Contains an instance of Scanner
+   */
   @NonNull private Scanner scanner;
+  /**
+   * Contains an instance of Printer
+   */
   @NonNull private Printer printer;
 
+  /**
+   * Initiates Command resolving process
+   */
   public void run() {
     DataClassesValidator validator = new DataClassesValidator();
     TicketCLIParser ticketCLIParser = new TicketCLIParser(scanner, validator, printer);

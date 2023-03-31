@@ -9,12 +9,28 @@ import java.util.Scanner;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * User can enter coordinates from Console
+ */
 @RequiredArgsConstructor
 public class CoordinatesCLIParser {
+  /**
+   * Contains an instance of Scanner
+   */
   @NonNull private Scanner scanner;
+  /**
+   * Contains an instance of ValidatorDataClasses
+   */
   @NonNull private DataClassesValidator validator;
+  /**
+   * Contains an instance of Printer
+   */
   @NonNull private Printer printer;
 
+  /**
+   * Offers an ability to interrupt data input
+   * @throws UserDataInputInterruptedException if got not y/Y from user
+   */
   private void proposeContinue() throws UIException {
     printer.print("Do you want to continue? [y/Y - for yes, other - for no]: ");
     String userInput = scanner.nextLine().trim();
@@ -22,6 +38,11 @@ public class CoordinatesCLIParser {
       throw new UserDataInputInterruptedException("Data input successfully interrupted");
   }
 
+  /**
+   * Method is parsing X coordinate
+   * @return float variable of X coordinate
+   * @throws UserDataInputInterruptedException if got not y/Y from user
+   */
   private float parseXCoord() throws UIException {
 
     printer.print("Enter X coordinate (float & greater than -390): ");
@@ -53,6 +74,11 @@ public class CoordinatesCLIParser {
     }
   }
 
+  /**
+   * Method is parsing Y coordinate
+   * @return float variable of Y coordinate
+   * @throws UserDataInputInterruptedException if got not y/Y from user
+   */
   private Integer parseYCoord() throws UIException {
     printer.print("Enter Y coordinate (Integer): ");
 
@@ -82,6 +108,11 @@ public class CoordinatesCLIParser {
     }
   }
 
+  /**
+   * Creates an instance of coordinates and returns it
+   * @return instance of coordinates
+   * @throws UserDataInputInterruptedException if input stream ended or process interrupted by user
+   */
   public Coordinates parseCoordinates() throws UIException {
     printer.println("#### ENTERING COORDINATES ####");
     float x = parseXCoord();

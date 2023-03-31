@@ -19,3 +19,6 @@ common/tmp
 
 # Ignoring testing collection file
 collection.xml
+
+# Ignoring testing script
+script.txt

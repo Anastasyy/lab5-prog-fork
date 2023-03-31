@@ -58,5 +58,5 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_HOOK }}
-          SLACK_USERNAME: Updates Notifier
+          SLACK_USERNAME: UPDs Notifier
           SLACK_TITLE: 'Main repository update'

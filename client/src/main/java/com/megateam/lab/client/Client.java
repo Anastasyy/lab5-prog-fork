@@ -17,7 +17,6 @@ import com.megateam.lab.server.db.FileValidationService;
 import com.megateam.lab.server.db.TicketDatabase;
 import com.megateam.lab.server.db.TicketMarshallingUnmarshallingService;
 import com.megateam.lab.server.executors.SingleCommandExecutor;
-
 import java.util.Scanner;
 
 public class Client {
@@ -36,11 +35,8 @@ public class Client {
     Resolver resolver = new SingleCommandResolver(commandFactory);
     ScriptResolver scriptResolver = new ScriptResolver(resolver);
 
-    SingleCommandExecutor executor = new SingleCommandExecutor(
-            dao,
-            fileManipulationService,
-            scriptResolver
-    );
+    SingleCommandExecutor executor =
+        new SingleCommandExecutor(dao, fileManipulationService, scriptResolver);
     ScriptExecutor scriptExecutor = new ScriptExecutor(executor);
 
     Console console = new Console(resolver, executor, scriptExecutor, scanner, printer);

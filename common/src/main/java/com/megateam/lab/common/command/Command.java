@@ -10,12 +10,11 @@ import com.megateam.lab.common.executors.ScriptExecutor;
 import com.megateam.lab.common.resolvers.ScriptResolver;
 import com.megateam.lab.common.util.FileManipulationService;
 import com.megateam.lab.common.util.Printer;
+import java.util.List;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 public abstract class Command {
@@ -31,5 +30,5 @@ public abstract class Command {
   @Setter protected ScriptResolver scriptResolver;
 
   public abstract boolean execute()
-          throws EnvException, DatabaseException, CommandArgumentsException, ExecutionException;
+      throws EnvException, DatabaseException, CommandArgumentsException, ExecutionException;
 }

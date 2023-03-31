@@ -8,12 +8,11 @@ import com.megateam.lab.common.executors.ScriptExecutor;
 import com.megateam.lab.common.resolvers.Resolver;
 import com.megateam.lab.common.util.Printer;
 import com.megateam.lab.server.executors.SingleCommandExecutor;
+import java.util.List;
+import java.util.Scanner;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import sun.misc.Signal;
-
-import java.util.List;
-import java.util.Scanner;
 
 @RequiredArgsConstructor
 public class Console {
@@ -27,10 +26,12 @@ public class Console {
     DataClassesValidator validator = new DataClassesValidator();
     TicketCLIParser ticketCLIParser = new TicketCLIParser(scanner, validator, printer);
 
-    Signal.handle(new Signal("INT"), (signal) -> {
-      printer.println("\nProgram was interrupted: shutdown...");
-      System.exit(0);
-    });
+    Signal.handle(
+        new Signal("INT"),
+        (signal) -> {
+          printer.println("\nProgram was interrupted: shutdown...");
+          System.exit(0);
+        });
 
     while (true) {
       printer.print("Enter command: ");

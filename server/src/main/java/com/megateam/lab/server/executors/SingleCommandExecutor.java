@@ -15,23 +15,21 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class SingleCommandExecutor implements Executor
-{
+public class SingleCommandExecutor implements Executor {
 
-	@NonNull Dao<Ticket> dao;
-	@NonNull FileManipulationService fileManipulationService;
-	@NonNull ScriptResolver scriptResolver;
+  @NonNull Dao<Ticket> dao;
+  @NonNull FileManipulationService fileManipulationService;
+  @NonNull ScriptResolver scriptResolver;
 
-	@Override
-	public boolean execute(Exchange exchange)
-			throws EnvException, DatabaseException, CommandArgumentsException, ExecutionException
-	{
-		Command command = exchange.getCommand();
+  @Override
+  public boolean execute(Exchange exchange)
+      throws EnvException, DatabaseException, CommandArgumentsException, ExecutionException {
+    Command command = exchange.getCommand();
 
-		command.setDao(dao);
-		command.setFileManipulationService(fileManipulationService);
-		command.setScriptResolver(scriptResolver);
+    command.setDao(dao);
+    command.setFileManipulationService(fileManipulationService);
+    command.setScriptResolver(scriptResolver);
 
-		return command.execute();
-	}
+    return command.execute();
+  }
 }

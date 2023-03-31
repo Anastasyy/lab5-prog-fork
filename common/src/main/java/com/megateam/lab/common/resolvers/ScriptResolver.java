@@ -9,9 +9,6 @@ import com.megateam.lab.common.exceptions.impl.DataclassParsingException;
 import com.megateam.lab.common.exceptions.impl.ResolvingScriptNotFoundException;
 import com.megateam.lab.common.exceptions.impl.ScriptCommandResolvingException;
 import com.megateam.lab.common.util.DataclassesScriptParser;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -19,43 +16,41 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class ScriptResolver implements Resolver {
-	@NonNull
-	private Resolver resolver;
-	@Override
-	public List<Exchange> resolve(File script) throws ResolverException, DataclassParsingException
-	{
-		List<Exchange> exchanges = new LinkedList<>();
+  @NonNull private Resolver resolver;
 
-		try {
-			BufferedReader scriptReader = new BufferedReader(new FileReader(script));
-			Scanner scriptScanner = new Scanner(scriptReader);
+  @Override
+  public List<Exchange> resolve(File script) throws ResolverException, DataclassParsingException {
+    List<Exchange> exchanges = new LinkedList<>();
 
-			while (scriptScanner.hasNextLine()) {
-				try {
-					Exchange exchange = resolver.resolve(scriptScanner.nextLine());
-					Command command = exchange.getCommand();
+    try {
+      BufferedReader scriptReader = new BufferedReader(new FileReader(script));
+      Scanner scriptScanner = new Scanner(scriptReader);
 
-					if (command.getUsesElements() == UsesElements.USES) {
-						command.setAdditionalArgs(
-								List.of(
-										DataclassesScriptParser.parseTicket(scriptScanner)
-								)
-						);
-						exchange.setCommand(command);
-					}
-					exchanges.add(exchange);
-				} catch (CommandNotFoundException e) {
-					throw new ScriptCommandResolvingException(e.getMessage());
-				}
-			}
+      while (scriptScanner.hasNextLine()) {
+        try {
+          Exchange exchange = resolver.resolve(scriptScanner.nextLine());
+          Command command = exchange.getCommand();
 
-		} catch (IOException e) {
-			throw new ResolvingScriptNotFoundException("Error occurred while script execution: " + e.getMessage());
-		}
+          if (command.getUsesElements() == UsesElements.USES) {
+            command.setAdditionalArgs(List.of(DataclassesScriptParser.parseTicket(scriptScanner)));
+            exchange.setCommand(command);
+          }
+          exchanges.add(exchange);
+        } catch (CommandNotFoundException e) {
+          throw new ScriptCommandResolvingException(e.getMessage());
+        }
+      }
 
-		return exchanges;
-	}
+    } catch (IOException e) {
+      throw new ResolvingScriptNotFoundException(
+          "Error occurred while script execution: " + e.getMessage());
+    }
+
+    return exchanges;
+  }
 }

@@ -13,8 +13,7 @@ public interface Resolver {
         "Trying to invoke default resolve method. This is not possible.");
   }
 
-  default List<Exchange> resolve(File script) throws ResolverException, DataclassParsingException
-  {
+  default List<Exchange> resolve(File script) throws ResolverException, DataclassParsingException {
     throw new DefaultResolverUsedException(
         "Trying to invoke default resolve method. This is not possible.");
   }

@@ -1,9 +1,8 @@
 package com.megateam.lab.common.data;
 
 import com.megateam.lab.common.data.util.VenueIdGenerator;
-import lombok.*;
-
 import javax.xml.bind.annotation.*;
+import lombok.*;
 
 @NoArgsConstructor(force = true)
 @AllArgsConstructor

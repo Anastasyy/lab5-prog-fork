@@ -2,11 +2,10 @@ package com.megateam.lab.common.data;
 
 import com.megateam.lab.common.data.util.LocalDateTimeAdapter;
 import com.megateam.lab.common.data.util.TicketIdGenerator;
-import lombok.*;
-
+import java.time.LocalDateTime;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.time.LocalDateTime;
+import lombok.*;
 
 @NoArgsConstructor(force = true)
 @AllArgsConstructor
@@ -52,15 +51,14 @@ public class Ticket implements Comparable<Ticket> {
   private Venue venue;
 
   public Ticket(
-          String name,
-          Coordinates coordinates,
-          LocalDateTime creationDate,
-          float price,
-          String comment,
-          Boolean refundable,
-          TicketType type,
-          Venue venue
-  ) {
+      String name,
+      Coordinates coordinates,
+      LocalDateTime creationDate,
+      float price,
+      String comment,
+      Boolean refundable,
+      TicketType type,
+      Venue venue) {
     this.id = TicketIdGenerator.generateNewId();
     this.name = name;
     this.coordinates = coordinates;

@@ -1,12 +1,11 @@
 package com.megateam.lab.common.command.util;
 
 import com.megateam.lab.common.command.Command;
+import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-
-import java.util.List;
 
 @Builder(setterPrefix = "set")
 @Getter

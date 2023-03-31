@@ -1,15 +1,14 @@
 package com.megateam.lab.common.data;
 
 import com.megateam.lab.common.data.util.LocalDateTimeAdapter;
+import java.time.LocalDateTime;
+import java.util.List;
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-
-import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @NoArgsConstructor(force = true)

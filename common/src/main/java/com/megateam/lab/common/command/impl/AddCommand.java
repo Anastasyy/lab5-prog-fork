@@ -5,18 +5,14 @@ import com.megateam.lab.common.command.CommandSource;
 import com.megateam.lab.common.command.UsesElements;
 import com.megateam.lab.common.data.Ticket;
 import com.megateam.lab.common.util.Printer;
+import java.util.List;
 import lombok.Builder;
 import lombok.NonNull;
-
-import java.util.List;
 
 public class AddCommand extends Command {
   @Builder(setterPrefix = "set")
   public AddCommand(
-          @NonNull Printer printer,
-          @NonNull CommandSource source,
-          @NonNull List<String> args
-  ) {
+      @NonNull Printer printer, @NonNull CommandSource source, @NonNull List<String> args) {
     super(printer, source, UsesElements.USES, args);
   }
 

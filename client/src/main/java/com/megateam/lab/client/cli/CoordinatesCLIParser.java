@@ -5,10 +5,9 @@ import com.megateam.lab.common.data.util.DataClassesValidator;
 import com.megateam.lab.common.exceptions.UIException;
 import com.megateam.lab.common.exceptions.impl.UserDataInputInterruptedException;
 import com.megateam.lab.common.util.Printer;
+import java.util.Scanner;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-
-import java.util.Scanner;
 
 @RequiredArgsConstructor
 public class CoordinatesCLIParser {

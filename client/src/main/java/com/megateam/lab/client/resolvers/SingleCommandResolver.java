@@ -3,18 +3,16 @@ package com.megateam.lab.client.resolvers;
 import com.megateam.lab.common.command.Command;
 import com.megateam.lab.common.command.CommandFactory;
 import com.megateam.lab.common.command.CommandSource;
-import com.megateam.lab.common.exceptions.ResolverException;
 import com.megateam.lab.common.command.util.Exchange;
+import com.megateam.lab.common.exceptions.ResolverException;
 import com.megateam.lab.common.resolvers.Resolver;
+import java.util.Arrays;
+import java.util.List;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Arrays;
-import java.util.List;
-
 @RequiredArgsConstructor
-public class SingleCommandResolver implements Resolver
-{
+public class SingleCommandResolver implements Resolver {
   @NonNull private CommandFactory commandFactory;
 
   @Override

@@ -5,11 +5,10 @@ import com.megateam.lab.common.data.Ticket;
 import com.megateam.lab.common.exceptions.DatabaseException;
 import com.megateam.lab.common.exceptions.EnvException;
 import com.megateam.lab.server.db.Database;
-import lombok.NonNull;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import lombok.NonNull;
 
 public class TicketDaoImpl implements Dao<Ticket> {
   @NonNull private Database<Ticket> database;
